@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-
       - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: |
+        run: |   
           npm ci --force
       - name: Build
         run: |
@@ -60,7 +60,7 @@ jobs:
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKSHOP6_GITHUB_TOKEN }}
-        with:
+        with:  
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
